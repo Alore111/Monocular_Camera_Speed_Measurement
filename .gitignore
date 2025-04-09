@@ -1,0 +1,13 @@
+# Folders
+__pycache__/
+build/
+
+
+# Files
+*.weights
+*.pt
+*.pth
+*.mp4
+*.avi
+*.so
+*.txt
