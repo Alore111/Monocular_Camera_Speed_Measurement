@@ -1,6 +1,7 @@
 # Folders
 __pycache__/
 build/
+.idea
 
 
 # Files
