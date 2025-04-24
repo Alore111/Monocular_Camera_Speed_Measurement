@@ -159,7 +159,7 @@ class DepthEstimator:
         self.model_da = self.model_da.to(device).eval()
 
 
-        self.depth_scale_factor = 50  # 经验参数
+        self.depth_scale_factor = 7  # 经验参数
         self.smoothing_window = smoothing_window  # 速度计算的帧数范围
         self.depth_history = {}  # 记录历史深度数据
         self.time_history = {}  # 记录时间戳数据
@@ -256,7 +256,7 @@ class DepthEstimator:
         # 计算加权深度（高斯加权）
         depth_median = np.median(filtered_depths)
         weights = np.exp(-((filtered_depths - depth_median) ** 2) / (2 * (iqr ** 2 + 1e-6)))
-        stable_depth = np.average(filtered_depths, weights=weights) * 7
+        stable_depth = np.average(filtered_depths, weights=weights)
 
         # 转换为实际距离
         distance_calced = self.depth_scale_factor / (stable_depth + 1e-6)  # 防止除零
